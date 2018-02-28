@@ -1,0 +1,28 @@
+Bug Log
+
+Checkpoint 1
+1. For the keyboard, we tried itoa, etc. and realized that it was actually a differnt IO port for keyboard (0x60, 0x64), which was why I was unable to get the correct input from the keyboard. Was reading from completely irrevelant IO port.
+2. For the paging, we were not able to get it working properly until we realized that we needed to write to all the CR registers before enabling paging.
+3. Offset of read_data buffer was not correct, causing copied string to be written at the same position in file. Fixed by minus off the offset
+4. In filesystem read_data Resetting of offset to 0 was not supposed to be done every inner loop (technically no harm but waste cycles). Move to outside loop.
+
+Checkpoint 2
+
+1. When implementing terminal driver, we initially didn't make sure that backspace would make the cursor go back to the previous line, but this apparently had to be prevented, so we fixed this after the demo.
+2. We initially had a bug in which file read by name was reading the file even though it was not the correct number of characters (for the very long name text file).
+
+Checkpoint 3
+1. cat program didn't run correctly, but it was because we implemented our file_read() function incorrectly. We changed file_read() appropriately and called read syscall using inode and we were able to get it to work. It also used to be in infinite loop but that got fixed as well.
+2. We were not flushing the TLB after context switching, which led to page faulting occasionally.
+3. We were not trimming whitespace properly when parsing commands, such as multiple whitespaces in a row.
+4. Read data coud not print out the large text file; change working of read data to allow for detection up to overshooting the offset and halt then
+
+Checkpoint 4
+
+1. We fixed the problem with ls from checkpoint 3 in which the text file with the very long name had an extra character being printed when it shouldn't have by making sure that our terminal read was 
+2. We had a bug in which cat and grep with no arguments was not printing an error message and we fixed the problem by fixing the getargs function (error checking for input).
+
+Checkpoint 5
+
+1. Initially, we had trouble incorporating scheduler with multiple terminals as different group members implemented them, but we were able to fix it by combining the variables (screen_process, etc.) so that the scheduler would not interfere with the current terminal (i.e. scheduled process vs terminal).
+2. There was a phantom prompt being printed after adding a base terminal to one of the shells, but we were able to fix it by forcing the terminal write function to not write to the wrong terminal when adding the base terminal by adding two bookkeeping variables.

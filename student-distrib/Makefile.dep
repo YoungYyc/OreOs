@@ -1,0 +1,31 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h paging.h
+paging.o: paging.S paging.h
+wrapper.o: wrapper.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+e1000.o: e1000.c e1000.h types.h init_paging.h
+file_system.o: file_system.c file_system.h types.h multiboot.h lib.h \
+  scheduler.h system_calls.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c idt.h scheduler.h types.h lib.h i8259.h x86_desc.h wrapper.h \
+  system_calls.h rtc.h e1000.h mouse.h
+init_paging.o: init_paging.c paging.h init_paging.h types.h \
+  paging_structure.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  tests.h idt.h scheduler.h init_paging.h rtc.h paging_structure.h \
+  file_system.h task.h system_calls.h terminal.h e1000.h mouse.h
+lib.o: lib.c lib.h types.h terminal.h scheduler.h
+mouse.o: mouse.c mouse.h idt.h scheduler.h types.h lib.h i8259.h
+rtc.o: rtc.c rtc.h types.h lib.h i8259.h
+scheduler.o: scheduler.c scheduler.h types.h paging_structure.h \
+  init_paging.h lib.h paging.h system_calls.h x86_desc.h terminal.h
+system_calls.o: system_calls.c system_calls.h types.h file_system.h \
+  multiboot.h init_paging.h paging_structure.h lib.h task.h x86_desc.h \
+  terminal.h rtc.h scheduler.h
+task.o: task.c task.h types.h paging.h init_paging.h paging_structure.h \
+  lib.h scheduler.h
+tcp_ip.o: tcp_ip.c
+terminal.o: terminal.c terminal.h types.h idt.h scheduler.h lib.h i8259.h \
+  x86_desc.h paging.h init_paging.h system_calls.h paging_structure.h
+tests.o: tests.c tests.h x86_desc.h types.h lib.h i8259.h \
+  paging_structure.h terminal.h rtc.h file_system.h multiboot.h \
+  system_calls.h
