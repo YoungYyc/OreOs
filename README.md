@@ -1,17 +1,8 @@
-LOGISTICS
------
-ECE 391 MP3 
-
-Checkpoint 1 due Monday 10/23/2017, 6pm in GitLab
-
-Checkpoint 2 due Monday 10/30/2017, 6pm in GitLab
-
-Checkpoint 3 due Monday 11/13/2017, 6pm in GitLab
-
-Checkpoint 4 due Tuesday 11/28/2017, 6pm in GitLab
-
-Checkpoint 5 due Monday 12/11/2017, 6pm in GitLab
-
+# OreOs
+set up the interrupt descriptor table (IDT), basic paging support for
+tasks, separate 4 MB pages for the kernel and applications, initialize a few devices, write the system call interface
+along with ten system calls, provide support for six tasks from program images in the file system which interface with
+the kernel via system calls, multiple terminals and basic scheduling.
 
 ACADEMIC INTEGRITY
 -----
@@ -83,5 +74,3 @@ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE
 PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND NEITHER THE AUTHOR NOR
 THE UNIVERSITY OF ILLINOIS HAS ANY OBLIGATION TO PROVIDE MAINTENANCE,
 SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS."
-# OreOs
-# OreOs
